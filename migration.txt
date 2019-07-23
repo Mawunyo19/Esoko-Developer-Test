@@ -1,0 +1,42 @@
+~~create a database
+ID
+First name
+last name
+Email
+Phone No
+Gender
+Age Of Person
+Profile Picture of each person
+Country of Person
+Home Address
+Occupation
+Hobbies
+Comments
+
+
+
+id decimal Primary Key
+col_1 varchar (50) default 'n/a' Not Null
+col_2 char (10),
+col_3 Decimal (10,2) default 0.0,
+col_4 Numeric(10,2) default 0.0,
+col_5 INTEGER,
+col_6 BIGINT,
+
+
+First name Varchar(50) NOT NULL,
+last name Varchar(50) NOT NULL,
+Email varchar(50) Default Null,
+Phone Number Varchar (24),
+Gender ENUM ('M','F') NOT NULL,
+Age Of Person char(10),
+Profile Picture of each Person Photo,
+Country of Person varchar(12),
+Occupation varchar(12)
+Hobbies varchar(24)
+Comments varchar(50),
+
+
+
+
+

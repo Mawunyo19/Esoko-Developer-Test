@@ -1,0 +1,138 @@
+
+
+package javaapplication3;
+
+
+public class JavaApplication3 {
+    private String name;
+    private String about;
+    private int birthYear;
+    
+    public Person(String name,String about,int birthYear){
+        this.name=name;
+        this.about = about;
+        this.birthYear =  birthYear;
+        
+    }
+    public String getName(){
+        return name;
+        
+    }
+    public int getBirthYear(){
+        return birthYear;
+                
+    }
+}
+
+
+
+
+
+import java.io.IOExpectation;
+
+import
+javax.servlet.ServletExpectation;
+import
+javax.servlet.http.htppServletRequest;
+import 
+javax.serlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+
+public class PersonServlet extends HttpServlet{
+    @Override
+    public void
+doGet(HttpServletRequestrequest,HttpServletResponseresponse)throws IOExpectation,
+        ServletException{
+        String requestUrl =
+                request.getRequestURL();
+                    String name = requestUrl.substring("/people/"lenght());
+                    Person person=DataStore .getInstance().getPerson(name);
+                    
+                    if(person !=null){
+                        String json = "{\n"};
+                        json+="\"name\":"+
+                                'JSONObjbect.quote(person.getName())+ ",\n";
+                                json += "\"about\":"+
+                                        JSON'Object.quote(person.getAbout)))+ "\n";
+                                        json+="birthYear\":"+
+                                                person.getBirthYear() + "\n";
+                                        json +="}";
+                      response.getOutputSteam().println(json);
+                      
+                    }
+                      else
+                      {
+                          //That person is not found ,so return an empty JSON oject. We could also
+                          return an error.
+                                  
+                                  response.getOutputStream().println("{}");
+                      }
+}
+
+    @Override
+    public void
+doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
+            String Name= request.getParameter("name");
+            String about = request.getParameter("about");
+            int birthYear = Integer.parseInt(request.getParameter("birthYear"));
+
+
+DataStore.getInstance().putPerson(new Person(name,about,birthYear,password));
+                        }
+             
+}
+        <web-app
+            xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+xmlnhttp://ww.w3.org/2001/xmlSchema-instance"
+xsi:schemaLocation="http://xlns.jcp.org/xml/ns/javaee"
+
+
+http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+        version="3.1">
+         <servlet>
+            <servlet-name>PersonServlet</servlet-name>
+             <servlet-class>PesonServlet</servlet-class>
+             </servlet>
+             
+             <servlet-mapping>
+                <servlet-name>PersonServlet</servlet-name>
+                        <url-pattern>/people/*</url-pattern>
+                         </servlet-mapping>
+        
+            </web-app>
+             
+<!DOCTYPE html>
+<html>
+             <head>
+<title>PIJON</title>
+             
+             <script>
+                        function
+             getPersonInf(){
+             
+           var name=
+             document.getElementById('name').
+             value;
+             
+            var ajaxRequest = new
+             XMLHttpRequest();
+             
+             ajaxRequest.onreadystatechange = function(){
+             if(ajaxRequest.onreadyState ==4){
+             if(ajaxRequest.status ==200){
+             
+             var person=
+             JSON.parse(ajaxRequest.responseText);
+             
+             document.getElemetaryyId('about').value=person.about;
+             
+             }
+             }
+             }
+             
+          
+             
+             
+         
+          
